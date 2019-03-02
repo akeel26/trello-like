@@ -1,0 +1,58 @@
+{
+  "columns": [
+    {
+      "id": 1,
+      "title": "Pending"
+    },
+    {
+      "id": 2,
+      "title": "In progress"
+    },
+    {
+      "id": 3,
+      "title": "Done"
+    },
+    {
+      "id": 4,
+      "title": "Bugs"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "title": "Card 1",
+      "description": "Lorem ipsum dolor sit amet",
+      "columnId": 1
+    },
+    {
+      "id": 2,
+      "title": "Card 2",
+      "description": "consectetur adipisicing elit",
+      "columnId": 1
+    },
+    {
+      "id": 3,
+      "title": "Card 3",
+      "description": "sed do eiusmod tempor incididunt ut labore",
+      "columnId": 2
+    },
+    {
+      "id": 4,
+      "title": "Card 4",
+      "description": "et dolore magna aliqua. Ut enim ad minim veniam",
+      "columnId": 3
+    },
+    {
+      "id": 5,
+      "title": "Card 5",
+      "description": "quis nostrud exercitation ullamco laboris nisi",
+      "columnId": 4
+    },
+    {
+      "id": 6,
+      "title": "Card 6",
+      "description": "cillum dolore eu fugiat nulla pariatur. Excepteur sint",
+      "columnId": 4
+    }
+  ]
+}

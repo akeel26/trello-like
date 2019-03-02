@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Trello-Like</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="" />
+
+    <!-- social media specific metas
+    ================================================== -->
+    <meta itemprop="name" content="">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="">
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image:src" content="" >
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- External
+    ================================================== -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body>
+    <!-- header
+    ================================================== -->
+    <header>
+
+        <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+            <a class="navbar-brand" href="#">Trello-Like</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-link my-2 my-sm-0 mr-sm-2" type="button" id="addColumn" data-toggle="modal" data-target="#addColumnModal">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="input-group y-2 my-sm-0 mr-sm-2">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search by card title/description" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>
+
+    </header> <!-- end header -->
+
+    <!-- Task board
+    ================================================== -->
+    <section>
+        <div class="container-fluid">
+          <div class="row" id="column-list"></div>
+        </div>
+    </section><!-- end section -->
+
+    <!-- Edit card modal
+    ================================================== -->
+    <div id="editCardModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="editId" />
+                        <input type="hidden" id="editColumnId" />
+                        <div class="form-group">
+                            <label for="editTitle">Title</label>
+                            <input type="text" class="form-control" id="editTitle" placeholder="Enter title" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="editDescription">Description</label>
+                            <textarea class="form-control" id="editDescription" placeholder="Enter description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- add column modal
+    ================================================== -->
+    <div id="addColumnModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="addColumnForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="addColumnTitle">List Title</label>
+                            <input type="text" class="form-control" id="addColumnTitle" placeholder="Enter title" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- edit column modal
+    ================================================== -->
+    <div id="editListModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editListForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="editListId" />
+                        <div class="form-group">
+                            <label for="editColumnTitle">List Title</label>
+                            <input type="text" class="form-control" id="editListTitle" placeholder="Enter title" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
